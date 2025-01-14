@@ -1,0 +1,86 @@
+%% This is a template for a thesis, including an example of how to create figures, how to add a watermark to a background, what to do when you want to add or remove chapters and an example of adding a reference list (bibliography)
+
+%% For any assistance with this document please direct correspoondence to jaketurnbull2559@gmail.com or jacob.turnbull@ndcn.ox.ac.uk if before 01/01/2029
+
+%% This is the main script of the document,however as dissertations are usually very long, this main text has been formatted such that most of the writing divided into subfiles each containing their own text file 
+
+\documentclass[12pt,onecolumn,letterpaper]{article}
+%% Language and font encodings
+\usepackage[spanish,english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+% Additional packages
+\usepackage{lipsum}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage[pages=some]{background}
+% Load package to allow paragraphs to be moved along page with ease and for the construction of glossaries
+\usepackage{ragged2e}
+\usepackage{float}
+%% Sets page size and margins
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,marginparwidth=2cm]{geometry}
+\usepackage{setspace}
+%% Useful packages for maths and notes as well as the colour of references and links
+\usepackage{amsmath}
+\usepackage[colorlinks=true, allcolors=darkgray]{hyperref}
+
+%% Begin the preamble, set up title, date, watermarked back ground and anything else you want
+
+% Create a watermark for page one so that the oxford logo is visible
+\backgroundsetup{scale=0.5,angle=0,opacity=0.025,
+contents={\includegraphics[scale=1]{Background watermark images/Oxford watermark.png}}}
+
+\BgThispage
+% Create our title, replace institution with, department and degree with your own if using
+\title{
+		%\vspace{-1in} 	
+		\usefont{OT1}{phv}{eb}{sc}
+		\normalfont \normalsize \setstretch{2}\textsc{\huge Supercool title that's going to really impress everyone} \\ [12pt]
+		Type of submission (eg PHD thesis)\\}
+\usepackage{authblk}
+
+% Departments and divisions should be written here; i.e MRI imaging, deparment of Physics
+\author[1,2]{Gertrude Lundqvist}
+        \affil[1]{\normalsize{The school of gnomery and garden tool mischief}}
+	\affil[2]{\normalsize{Oxfords magical creatures school}}
+\usepackage[printonlyused,withpage]{acronym}
+\usepackage{subfiles}
+%% Now that the preamble is done we can start our main document
+
+\begin{document}
+
+\maketitle
+\newpage
+% Add our watermark to the page with the contents too 
+\BgThispage
+% Choose your langauge (this current document only allows English or Spanish (don't move) but that can be changed by editting in preamble)
+\selectlanguage{english}
+
+% This creates your contents page, everytime you make a new section or subsection using the \section and \subsection commands it will automatically add and number that section
+\tableofcontents
+
+% Skip to a new page for the first section
+\newpage
+\addcontentsline{toc}{section}{Acknowledgments}
+\subfile{Acknowledgments/Acknowledgments.tex}
+\newpage
+\addcontentsline{toc}{section}{Glossary}
+\subfile{Abbreviations/Glossary.tex}
+\newpage
+% Here we simply load in our sections as we want, its a nice thing to note that the document keeps track of the order of sections and automatically numbers them (this is simply as the commands are added one after the other when loading a subfile)
+
+\subfile{Chapter1/Introduction.tex}
+\subfile{Chapter2/LitReview.tex}
+\subfile{Chapter3/Chap3.tex}
+\subfile{Chapter4/Chap4.tex}
+\subfile{Chapter5/Chap5.tex}
+\subfile{Chapter6/Chap6.tex}
+
+% These two commands specify your style of referencing and also the file from which your bibliography will be made. Make sure to check that your referencing is consistent before submitting any document (our bibliography here is exo-planets.bib but you can upload your own or create an automatically uploading library using Mendelev or Zotero)
+\bibliographystyle{apalike}
+\bibliography{exo-planets}
+\end{document}
+
+% After all of your sections are finished, its time for your appendices; 
+
